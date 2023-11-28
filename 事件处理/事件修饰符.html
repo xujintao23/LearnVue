@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>111</title>
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <style>
+    * {
+      margin-top: 20px;
+    }
+
+    .demo1 {
+      height: 50px;
+      background-color: skyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Vue中的事件修饰符：
+  1.prevent：阻止默认事件
+  2.stop：阻止事件冒泡
+  3.once：事件只触发一次
+  4.capture：使用事件的捕获模式
+  5.self：只有event.target是当前操作的元素是才触发事件
+  6.passive：事件的默认行为立即执行，无需等待事件回调执行完毕 
+  可以连写，按顺序执行-->
+  <div id="root">
+    <h1>hello,{{name}}</h1>
+    <!-- 阻止默认事件 -->
+    <a href="http://www.baidu.com" @click.prevent="showInfo">点击</a>
+    <div class="demo1" @click="showInfo">
+      <!-- 阻止事件冒泡 -->
+      <button @click.stop="showInfo">提示信息</button>
+    </div>
+    <!-- 事件只触发一次 -->
+    <button @click.once="showInfo">提示信息</button>
+  </div>
+
+  <script type="text/javascript">
+    Vue.config.productionTip = false
+
+    const x = new Vue({
+      el: '#root', //el用于指定当前Vue示例为哪个容器服务，值通常为css选择器字符串.
+      data: {
+        name: 'world'
+      },
+      methods: {
+        showInfo() {
+          alert("Hello,World!")
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

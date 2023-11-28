@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div class="root">
+    <h1>{{name}}</h1>
+    <button @click="showInfo">CliCK me!（不传参数）</button>
+    <button @click="showInfo1($event,66)">CliCK me!（传参数）</button>
+  </div>
+  <script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+      el: '.root',
+      data: {
+        name: 'Hello'
+      },
+      methods: {
+        showInfo(event) {
+          // console.log(event.target.innerText)
+          // console.log(this === vm) 若是箭头函数this则是window
+          alert("Hello,World!")
+        },
+        showInfo1(event, a) {
+          console.log(a)
+          console.log(event)
+          // console.log(event.target.innerText)
+          // console.log(this === vm) 若是箭头函数this则是window
+          alert("Hello,World!")
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
